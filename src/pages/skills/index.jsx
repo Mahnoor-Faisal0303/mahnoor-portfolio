@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Skills() {
   return (
-    <main className="min-h-screen bg-[#0b0314] text-white font-sans p-20 flex flex-col items-center">
+    <main id="skills" className="min-h-screen bg-[#0b0314] text-white font-sans p-20 flex flex-col items-center">
       <div className="md:min-w-xl mb-10 flex flex-col items-center justify-center">
         <div className="flex gap-4 md:gap-14 mb-14">
           <div className="flex flex-col items-center justify-center">

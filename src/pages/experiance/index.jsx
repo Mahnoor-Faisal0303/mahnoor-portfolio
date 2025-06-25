@@ -3,7 +3,7 @@ import { Cardcomponent } from "@/components/card";
 
 export default function Experiance() {
   return (
-    <main className="min-h-screen bg-[#0b0314] text-white font-sans p-20 flex flex-col items-center">
+    <main id="experience" className="min-h-screen bg-[#0b0314] text-white font-sans p-20 flex flex-col items-center">
         <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent animate-gradient-x">
           Work Experiance.
         </h1>

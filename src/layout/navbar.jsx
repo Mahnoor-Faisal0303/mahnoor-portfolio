@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,30 +15,34 @@ export default function Navbar() {
               isOpen ? "hidden" : ""
             }`}
           >
-            <a
+            <Link
               href="#home"
+              scroll={true}
               className="hover:text-cyan-400 hover:underline transition-colors"
             >
               Home
-            </a>
-            <a
-              href="/skills"
+            </Link>
+            <Link
+              href="#skills"
+              scroll={true}
               className="hover:text-cyan-400 hover:underline transition-colors"
             >
               Skills
-            </a>
-            <a
-              href="#education"
+            </Link>
+            <Link
+              href="#experience"
+              scroll={true}
               className="hover:text-cyan-400 hover:underline transition-colors"
             >
-              Education
-            </a>
-            <a
+              Experience
+            </Link>
+            <Link
               href="#contact"
+              scroll={true}
               className="hover:text-cyan-400 hover:underline transition-colors"
             >
               Contact
-            </a>
+            </Link>
           </div>
           <div className={`md:hidden ${isOpen ? "hidden" : ""}`}>
             <button
@@ -71,30 +76,34 @@ export default function Navbar() {
           </button>
           <div className="text-2xl font-bold">MyPortfolio</div>
           <div className="mt-10 space-y-4 text-white text-base font-medium">
-            <a
+            <Link
               href="#home"
+              scroll={true}
               className="block font-bold hover:text-cyan-400 hover:underline"
             >
               Home
-            </a>
-            <a
-              href="/skills"
+            </Link>
+            <Link
+              href="#skills"
+              scroll={true}
               className="block font-bold hover:text-cyan-400 hover:underline"
             >
               Skills
-            </a>
-            <a
-              href="#education"
+            </Link>
+            <Link
+              href="#experience"
+              scroll={true}
               className="block font-bold hover:text-cyan-400 hover:underline"
             >
-              Education
-            </a>
-            <a
+              Experience
+            </Link>
+            <Link
               href="#contact"
+              scroll={true}
               className="block font-bold hover:text-cyan-400 hover:underline"
             >
               Contact
-            </a>
+            </Link>
           </div>
         </div>
       </div>
