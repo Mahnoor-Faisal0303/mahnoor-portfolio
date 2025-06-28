@@ -75,7 +75,7 @@ export function ContactCard() {
   };
 
   return (
-    <Card className="w-xl bg-gradient-to-r from-[#130428] via-[#38126D] to-[#190634] shadow-xl border border-[#693B93] backdrop-blur-md text-white">
+    <Card className="w-xs md:w-xl bg-gradient-to-r from-[#130428] via-[#38126D] to-[#190634] shadow-xl border border-[#693B93] backdrop-blur-md text-white">
       <CardContent className="w-full">
         <Form {...form}>
           <form
@@ -162,7 +162,7 @@ export function ContactCard() {
             <div className="flex justify-center">
               <Button
                 type="submit"
-                className="bg-blue-800 hover:bg-blue-700 hover:cursor-pointer w-md text-md p-6"
+                className="bg-blue-800 hover:bg-blue-700 hover:cursor-pointer w-[300px] md:w-md text-md p-6"
               >
                 Submit
               </Button>
@@ -170,7 +170,7 @@ export function ContactCard() {
           </form>
         </Form>
 
-        <div className="flex justify-between gap-4 my-4 mx-4">
+        <div className="flex justify-center md:justify-between flex-wrap gap-4 my-4 mx-4">
           <a
             href="https://twitter.com/your_username"
             target="_blank"
@@ -204,7 +204,7 @@ export function ContactCard() {
             </svg>
             LinkedIn
           </a>
-          {/* Email */}
+
           <a
             href="mailto:faisalmahnoor86@example.com"
             target="_blank"
@@ -222,7 +222,6 @@ export function ContactCard() {
             Email
           </a>
 
-          {/* Phone */}
           <a
             href="tel:03468263572"
             target="_blank"
