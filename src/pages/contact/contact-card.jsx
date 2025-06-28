@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 import {
   Form,
   FormControl,
@@ -44,10 +45,33 @@ export function ContactCard() {
   });
 
   const onSubmit = (data) => {
-    toast("Message Sent!", {
-      description: "Your data was saved to the server.",
-    });
-    console.log(data);
+    const templateParams = {
+      name: `${data.first_name} ${data.last_name}`,
+      email: data.email,
+      message: data.message,
+    };
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_KEY,
+      )
+      .then(
+        (response) => {
+          toast("Message Sent!", {
+            description: "Your message was sent successfully.",
+          });
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        (error) => {
+          toast.error("Failed to send message", {
+            description: "Please try again later.",
+          });
+          console.log("FAILED...", error);
+        }
+      );
   };
 
   return (
