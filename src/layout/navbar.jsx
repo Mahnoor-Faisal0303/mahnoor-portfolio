@@ -37,6 +37,13 @@ export default function Navbar() {
               Experience
             </Link>
             <Link
+              href="#articles"
+              scroll={true}
+              className="hover:text-cyan-400 hover:underline transition-colors"
+            >
+              Articles
+            </Link>
+            <Link
               href="#contact"
               scroll={true}
               className="hover:text-cyan-400 hover:underline transition-colors"
