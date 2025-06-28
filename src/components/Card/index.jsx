@@ -10,7 +10,7 @@ import {
 } from "../ui/card";
 import Image from "next/image";
 
-export function Cardcomponent() {
+export function CardComponent() {
   return (
     <Card className="relative z-30 w-full max-w-md bg-gradient-to-r from-[#130428] via-[#38126D] to-[#190634] shadow-xl border border-[#693B93] backdrop-blur-md text-white flex flex-col md:flex-row items-center gap-6 transform transition-transform duration-300 ease-in-out hover:scale-105">
       <CardContent>
