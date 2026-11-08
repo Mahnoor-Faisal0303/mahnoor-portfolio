@@ -32,6 +32,10 @@ export default function Document() {
           name="keywords"
           content="Mahnoor Faisal, Mahnoor Faisal Software Engineer, Mahnoor Faisal Karachi, React developer, Next.js developer, React Native developer, Django, portfolio"
         />
+        <meta
+          name="google-site-verification"
+          content="MAW2bLtXX5sfk_UeAioqcaIrOCFxRND8NbOn2ob6Yy0"
+        />
         <meta name="author" content={profile.name} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta name="theme-color" content="#1A0B2E" />
