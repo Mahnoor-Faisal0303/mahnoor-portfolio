@@ -16,7 +16,7 @@ export default function Document() {
           content="Frontend-focused Software Engineer building web and mobile products with React, Next.js, React Native and AI-assisted workflows."
         />
         <meta property="og:type" content="website" />
-        <link rel="icon" type="image/png" href="/tab-icon.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
       <body className="antialiased">
         <Main />

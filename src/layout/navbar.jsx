@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
@@ -13,10 +13,35 @@ const links = [
 ];
 
 const linkClass = "hover:text-cyan-400 transition-colors";
+const activeClass = "text-cyan-400";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState("#home");
   const close = () => setIsOpen(false);
+
+  useEffect(() => {
+    const update = () => {
+      const offset = 100; // navbar height + breathing room
+      let current = links[0].href;
+      for (const l of links) {
+        const el = document.getElementById(l.href.slice(1));
+        if (el && el.getBoundingClientRect().top <= offset) current = l.href;
+      }
+      // at the very bottom, highlight the last section
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+        current = links[links.length - 1].href;
+      }
+      setActive(current);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   return (
     <nav className="bg-[#1A0B2E]/95 backdrop-blur text-white shadow-md sticky top-0 z-50">
@@ -28,7 +53,11 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className={linkClass}>
+              <a
+                key={l.href}
+                href={l.href}
+                className={`${linkClass} ${active === l.href ? activeClass : ""}`}
+              >
                 {l.label}
               </a>
             ))}
@@ -75,7 +104,12 @@ export default function Navbar() {
           </div>
           <div className="mt-10 space-y-4 text-base font-bold">
             {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={close} className={`block ${linkClass}`}>
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={close}
+                className={`block ${linkClass} ${active === l.href ? activeClass : ""}`}
+              >
                 {l.label}
               </a>
             ))}

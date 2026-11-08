@@ -15,9 +15,9 @@ export const profile = {
 
 export const stats = [
   { value: "3+", label: "Years of experience" },
-  { value: "15", label: "Products shipped" },
-  { value: "3", label: "Platforms: Website, Application" },
-  { value: "2", label: "Years building with AI tools" },
+  { value: "20+", label: "Products shipped" },
+  { value: "2", label: "Platforms: Website, Application" },
+  { value: "2+", label: "Years building with AI tools" },
 ];
 
 export const experience = [
