@@ -1,30 +1,42 @@
-import Image from "next/image";
-import { CardComponent } from "@/components/Card";
+import { Section, Tag, cardClass } from "@/components/section";
+import { experience } from "@/data/portfolio";
 
 export default function Experiance() {
   return (
-    <main id="experience" className="min-h-screen bg-[#0b0314] text-white font-sans p-20 flex flex-col items-center">
-        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent animate-gradient-x">
-          Work Experiance.
-        </h1>
-      <div className="md:min-w-xl mb-10 flex flex-col items-center justify-center min-h-[100vh]">
-        <div className="flex min-h-[100vh] items-center">
-          <div className="relative w-70 h-50 md:w-250 md:h-150">
-            <div className="absolute inset-1 z-1 flex items-center">
-              <Image
-                src="/ellipse-purple.png"
-                alt="Background"
-                layout="fill"
-                className="z-0"
-              />
-              <div className="gap-6 w-full flex flex-wrap justify-center">
-              <CardComponent />
-              <CardComponent />
+    <Section
+      id="experience"
+      title="Work Experience"
+      subtitle="Three years of growing from intern to leading frontend on a multi-product platform."
+    >
+      <ol className="relative border-l-2 border-[#693B93] mx-3 md:mx-auto max-w-4xl space-y-10">
+        {experience.map((job) => (
+          <li key={job.title + job.period} className="px-6 md:px-10 relative">
+            <span
+              className={`absolute -left-[9px] top-2 h-4 w-4 rounded-full border-2 border-[#0b0314] ${
+                job.current ? "bg-cyan-400 animate-pulse" : "bg-purple-500"
+              }`}
+            />
+            <div className={`${cardClass} p-6`}>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <h3 className="text-xl font-semibold">{job.title}</h3>
+                <span className="text-sm text-cyan-400">{job.period}</span>
+              </div>
+              <p className="text-purple-300 italic mb-4">{job.company}</p>
+              <ul className="list-disc pl-5 space-y-2 text-sm text-gray-300">
+                {job.points.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2 mt-5">
+                {job.tags.map((t) => (
+                  <Tag key={t}>{t}</Tag>
+                ))}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
+          </li>
+        ))}
+      </ol>
+
+    </Section>
   );
 }

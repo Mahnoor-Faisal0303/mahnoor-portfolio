@@ -14,6 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { profile } from "@/data/portfolio";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -59,23 +60,23 @@ export function ContactCard() {
         process.env.NEXT_PUBLIC_KEY,
       )
       .then(
-        (response) => {
+        () => {
           toast("Message Sent!", {
             description: "Your message was sent successfully.",
           });
-          console.log("SUCCESS!", response.status, response.text);
+          form.reset();
         },
         (error) => {
           toast.error("Failed to send message", {
             description: "Please try again later.",
           });
-          console.log("FAILED...", error);
+          console.error("EmailJS error:", error);
         }
       );
   };
 
   return (
-    <Card className="w-xs md:w-xl bg-gradient-to-r from-[#130428] via-[#38126D] to-[#190634] shadow-xl border border-[#693B93] backdrop-blur-md text-white">
+    <Card className="w-full max-w-xl bg-gradient-to-r from-[#130428] via-[#38126D] to-[#190634] shadow-xl border border-[#693B93] backdrop-blur-md text-white">
       <CardContent className="w-full">
         <Form {...form}>
           <form
@@ -162,7 +163,7 @@ export function ContactCard() {
             <div className="flex justify-center">
               <Button
                 type="submit"
-                className="bg-blue-800 hover:bg-blue-700 hover:cursor-pointer w-[300px] md:w-md text-md p-6"
+                className="bg-blue-800 hover:bg-blue-700 hover:cursor-pointer w-full text-md p-6"
               >
                 Submit
               </Button>
@@ -170,26 +171,9 @@ export function ContactCard() {
           </form>
         </Form>
 
-        <div className="flex justify-center md:justify-between flex-wrap gap-4 my-4 mx-4">
+        <div className="flex justify-center flex-wrap gap-4 my-4 mx-4">
           <a
-            href="https://twitter.com/your_username"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 border border-white rounded hover:border-cyan-400 hover:text-cyan-400 transition rounded-md"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-5 h-5"
-            >
-              <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 001.88-2.38 8.6 8.6 0 01-2.73 1.04 4.28 4.28 0 00-7.3 3.9A12.15 12.15 0 013 5.13a4.27 4.27 0 001.33 5.71A4.23 4.23 0 012 10v.05a4.29 4.29 0 003.43 4.2 4.31 4.31 0 01-1.92.07 4.28 4.28 0 004 2.98A8.6 8.6 0 012 19.54 12.13 12.13 0 008.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.35-.02-.53A8.34 8.34 0 0022.46 6z" />
-            </svg>
-            Twitter
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/mahnoor-faisal-2519a0245"
+            href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 border border-white rounded hover:border-cyan-400 hover:text-cyan-400 transition rounded-md"
@@ -206,9 +190,7 @@ export function ContactCard() {
           </a>
 
           <a
-            href="mailto:faisalmahnoor86@example.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`mailto:${profile.email}`}
             className="flex items-center gap-2 px-4 py-2 border border-white rounded hover:border-cyan-400 hover:text-cyan-400 transition rounded-md"
           >
             <svg
@@ -219,13 +201,11 @@ export function ContactCard() {
             >
               <path d="M2 4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H2zm10 9L2 6h20l-10 7zm0 2l10-7v11H2V8l10 7z" />
             </svg>
-            Email
+            {profile.email}
           </a>
 
           <a
-            href="tel:03468263572"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`tel:${profile.phone}`}
             className="flex items-center gap-2 px-4 py-2 border border-white rounded hover:border-cyan-400 hover:text-cyan-400 transition rounded-md"
           >
             <svg
@@ -236,7 +216,7 @@ export function ContactCard() {
             >
               <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.48 2.53.73 3.88.73a1 1 0 011 1v3.5a1 1 0 01-1 1C10.3 22 2 13.7 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.35.25 2.67.73 3.88a1 1 0 01-.21 1.11l-2.2 2.2z" />
             </svg>
-            Phone
+            {profile.phoneDisplay}
           </a>
         </div>
       </CardContent>
