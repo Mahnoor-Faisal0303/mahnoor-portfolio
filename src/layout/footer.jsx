@@ -1,4 +1,5 @@
 import { profile } from "@/data/portfolio";
+import { scrollToSection } from "@/lib/scroll";
 
 const iconClass =
   "text-purple-300/70 transition-all duration-300 hover:text-cyan-400 hover:-translate-y-0.5";
@@ -9,7 +10,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
         <p className="text-sm sm:text-base text-purple-300/60 text-center sm:text-left">
           Designed &amp; built by{" "}
-          <a href="#home" className="text-purple-200 hover:text-cyan-400 transition-colors">
+          <a href="#home" onClick={(e) => scrollToSection(e, "#home")} className="text-purple-200 hover:text-cyan-400 transition-colors">
             Mahnoor Faisal
           </a>{" "}
           with Next.js and Tailwind CSS.

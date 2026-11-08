@@ -3,6 +3,7 @@ import Image from "next/image";
 import Reveal from "@/components/reveal";
 import { ArrowDown, Download, Github } from "lucide-react";
 import { profile, stats, headlineStack } from "@/data/portfolio";
+import { scrollToSection } from "@/lib/scroll";
 
 function CountUp({ value, duration = 1800 }) {
   const match = String(value).match(/^(\d+)(.*)$/);
@@ -180,6 +181,7 @@ export default function Hero() {
           >
             <a
               href="#contact"
+              onClick={(e) => scrollToSection(e, "#contact")}
               className="px-6 py-3 rounded-md bg-gradient-to-r from-blue-700 to-purple-700 hover:from-blue-600 hover:to-purple-600 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-700/40 transition-all font-medium"
             >
               Get in touch
@@ -281,6 +283,7 @@ export default function Hero() {
 
       <a
         href="#skills"
+        onClick={(e) => scrollToSection(e, "#skills")}
         aria-label="Scroll to skills"
         className="relative z-10 mt-12 mx-auto flex h-11 w-11 items-center justify-center rounded-full border border-purple-400/40 text-purple-300 hover:text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all animate-bounce"
       >

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { profile } from "@/data/portfolio";
+import { scrollToSection } from "@/lib/scroll";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -48,7 +49,11 @@ export default function Navbar() {
     <nav className="bg-[#1A0B2E]/95 backdrop-blur text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <a href="#home" className="text-xl sm:text-2xl font-bold">
+          <a
+            href="#home"
+            onClick={(e) => scrollToSection(e, "#home")}
+            className="text-xl sm:text-2xl font-bold"
+          >
             Mahnoor<span className="text-cyan-400">.</span>
           </a>
 
@@ -57,6 +62,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
+                onClick={(e) => scrollToSection(e, l.href)}
                 className={`${linkClass} ${active === l.href ? activeClass : ""}`}
               >
                 {l.label}
@@ -109,7 +115,10 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={close}
+                onClick={(e) => {
+                  scrollToSection(e, l.href);
+                  close();
+                }}
                 className={`block ${linkClass} ${active === l.href ? activeClass : ""}`}
               >
                 {l.label}

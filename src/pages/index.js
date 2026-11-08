@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { scrollToPathSection } from "@/lib/scroll";
 import Hero from "./hero";
 import Skills from "./skills";
 import Experiance from "./experiance";
@@ -7,6 +9,10 @@ import Contact from "./contact";
 import Articles from "./articles";
 
 export default function Home() {
+  useEffect(() => {
+    scrollToPathSection();
+  }, []);
+
   return (
     <>
       <Hero />
