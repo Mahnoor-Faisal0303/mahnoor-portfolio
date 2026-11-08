@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowDown, Download } from "lucide-react";
+import { ArrowDown, Download, Github } from "lucide-react";
 import { profile, stats, headlineStack } from "@/data/portfolio";
 
 export default function Hero() {
@@ -50,6 +50,14 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[#693B93] hover:border-cyan-400 hover:text-cyan-400 transition-colors font-medium"
             >
               <Download size={18} /> Download resume
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[#693B93] hover:border-cyan-400 hover:text-cyan-400 transition-colors font-medium"
+            >
+              <Github size={18} /> GitHub
             </a>
           </div>
         </div>

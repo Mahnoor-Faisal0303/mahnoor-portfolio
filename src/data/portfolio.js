@@ -6,6 +6,7 @@ export const profile = {
   phone: "+923198972882",
   phoneDisplay: "+92 319 8972882",
   linkedin: "https://www.linkedin.com/in/mahnoor-faisal-2519a0245",
+  github: "https://github.com/Mahnoor-Faisal0303",
   medium: "https://medium.com/@mahnoorfaysal",
   resume: "/Resume/Mahnoor_JS_Software_Engineer.pdf",
   summary:
