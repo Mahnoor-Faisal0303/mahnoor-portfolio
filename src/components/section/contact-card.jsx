@@ -78,12 +78,12 @@ export function ContactCard() {
   };
 
   const inputClass =
-    "p-6 bg-[#0b0314]/60 border border-[#693B93] placeholder:text-gray-500 hover:!border-purple-400 focus:!border-cyan-400 focus:!ring-2 focus:!ring-cyan-400/20 focus:!outline-none transition-all";
-  const labelClass = "text-purple-200";
+    "p-6 bg-page/60 border border-edge placeholder:text-ink-muted hover:!border-purple-400 focus:!border-brand focus:!ring-2 focus:!ring-brand/20 focus:!outline-none transition-all";
+  const labelClass = "text-violet-2";
 
   return (
-    <div className="exp-card relative flex flex-1 w-full rounded-2xl p-px bg-gradient-to-br from-purple-500/60 via-[#693B93]/40 to-cyan-400/60 shadow-xl">
-      <div className="relative flex flex-1 flex-col overflow-hidden rounded-[15px] bg-gradient-to-br from-[#130428] via-[#2a0e52] to-[#190634] text-white">
+    <div className="exp-card relative flex flex-1 w-full rounded-2xl p-px bg-gradient-to-br from-purple-500/60 via-edge/40 to-brand/60 shadow-xl">
+      <div className="relative flex flex-1 flex-col overflow-hidden rounded-[15px] bg-gradient-to-br from-card-a via-card-b to-card-c text-ink">
         <div className="pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full bg-purple-500/25 blur-3xl" />
         <Form {...form}>
           <form
@@ -155,7 +155,7 @@ export function ContactCard() {
             <Button
               type="submit"
               disabled={form.formState.isSubmitting}
-              className="group w-full text-md p-6 bg-gradient-to-r from-blue-700 to-purple-700 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:shadow-purple-700/40 hover:cursor-pointer transition-all"
+              className="group w-full text-md p-6 text-white bg-gradient-to-r from-blue-700 to-purple-700 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:shadow-purple-700/40 hover:cursor-pointer transition-all"
             >
               {form.formState.isSubmitting ? (
                 "Sending..."

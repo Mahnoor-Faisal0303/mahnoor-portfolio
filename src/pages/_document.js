@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { profile } from "@/data/portfolio";
 import { SITE_URL } from "@/lib/site";
+import { themeInitScript } from "@/components/theme-toggle";
 
 const TITLE = "Mahnoor Faisal | Software Engineer";
 const DESCRIPTION =
@@ -24,9 +25,10 @@ const personSchema = {
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" className="dark" suppressHydrationWarning>
       <Head>
         <meta charSet="utf-8" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <meta name="description" content={DESCRIPTION} />
         <meta
           name="keywords"

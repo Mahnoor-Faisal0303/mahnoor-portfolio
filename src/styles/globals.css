@@ -43,9 +43,40 @@ html {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* portfolio theme tokens (light) */
+  --page: #faf7ff;
+  --surface: #f0e8fb;
+  --card-a: #ffffff;
+  --card-b: #f6efff;
+  --card-c: #ebe0fa;
+  --edge: #cdb8ea;
+  --ink: #1a0b2e;
+  --ink-soft: #3f2d5c;
+  --ink-muted: #6b5a85;
+  --brand: #0e7490;
+  --brand-soft: #155e75;
+  --violet-1: #7e22ce;
+  --violet-2: #6b21a8;
+  --violet-3: #9333ea;
+  --scroll-track: #ece3f8;
+  color-scheme: light;
 }
 
 @theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-card-a: var(--card-a);
+  --color-card-b: var(--card-b);
+  --color-card-c: var(--card-c);
+  --color-edge: var(--edge);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-violet-1: var(--violet-1);
+  --color-violet-2: var(--violet-2);
+  --color-violet-3: var(--violet-3);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -85,18 +116,13 @@ html {
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--page);
+  color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+body, nav, section, footer { transition: background-color 0.3s, color 0.3s; }
 
 .dark {
   --background: oklch(0.145 0 0);
@@ -130,6 +156,23 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  /* portfolio theme tokens (dark) */
+  --page: #0b0314;
+  --surface: #1a0b2e;
+  --card-a: #130428;
+  --card-b: #2a0e52;
+  --card-c: #190634;
+  --edge: #693b93;
+  --ink: #ffffff;
+  --ink-soft: #d1d5db;
+  --ink-muted: #9ca3af;
+  --brand: #22d3ee;
+  --brand-soft: #67e8f9;
+  --violet-1: #d8b4fe;
+  --violet-2: #e9d5ff;
+  --violet-3: #c084fc;
+  --scroll-track: #1a0b2e;
+  color-scheme: dark;
 }
 
 @layer base {
@@ -147,14 +190,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1A0B2E; 
+  background: var(--scroll-track);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #6EE7B7, #3B82F6);
   border-radius: 6px;
-  border: 3px solid #1A0B2E;
+  border: 3px solid var(--scroll-track);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -164,7 +207,7 @@ body {
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-purple-400) #1A0B2E;
+  scrollbar-color: var(--color-purple-400) var(--scroll-track);
 }
 
 @keyframes gradient-x {

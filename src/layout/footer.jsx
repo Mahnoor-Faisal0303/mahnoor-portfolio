@@ -2,15 +2,15 @@ import { profile } from "@/data/portfolio";
 import { scrollToSection } from "@/lib/scroll";
 
 const iconClass =
-  "text-purple-300/70 transition-all duration-300 hover:text-cyan-400 hover:-translate-y-0.5";
+  "text-violet-1/70 transition-all duration-300 hover:text-brand hover:-translate-y-0.5";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-purple-500/15 bg-[#1A0B2E] px-5 sm:px-8 py-10">
+    <footer className="border-t border-purple-500/15 bg-surface px-5 sm:px-8 py-10">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
-        <p className="text-sm sm:text-base text-purple-300/60 text-center sm:text-left">
+        <p className="text-sm sm:text-base text-violet-1/60 text-center sm:text-left">
           Designed &amp; built by{" "}
-          <a href="#home" onClick={(e) => scrollToSection(e, "#home")} className="text-purple-200 hover:text-cyan-400 transition-colors">
+          <a href="#home" onClick={(e) => scrollToSection(e, "#home")} className="text-violet-2 hover:text-brand transition-colors">
             Mahnoor Faisal
           </a>{" "}
           with Next.js and Tailwind CSS.

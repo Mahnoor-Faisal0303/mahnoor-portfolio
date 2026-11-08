@@ -30,19 +30,19 @@ const socials = [
 function InfoRow({ icon: Icon, label, value, href }) {
   const content = (
     <>
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-purple-400/40 bg-[#1A0B2E] text-cyan-400 transition-all duration-300 group-hover:border-cyan-400 group-hover:shadow-[0_0_18px_rgba(34,211,238,0.5)]">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-purple-400/40 bg-surface text-brand transition-all duration-300 group-hover:border-brand group-hover:shadow-[0_0_18px_rgba(34,211,238,0.5)]">
         <Icon size={18} />
       </span>
       <span className="min-w-0">
-        <span className="block text-xs uppercase tracking-wider text-purple-300/70">{label}</span>
-        <span className="block truncate text-gray-100 transition-colors group-hover:text-cyan-300">
+        <span className="block text-xs uppercase tracking-wider text-violet-1/70">{label}</span>
+        <span className="block truncate text-ink transition-colors group-hover:text-brand-soft">
           {value}
         </span>
       </span>
     </>
   );
   const cls =
-    "group flex items-center gap-4 rounded-xl border border-[#693B93]/60 bg-[#1A0B2E]/60 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-purple-400";
+    "group flex items-center gap-4 rounded-xl border border-edge/60 bg-surface/60 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-purple-400";
   return href ? (
     <a href={href} className={cls}>
       {content}
@@ -69,11 +69,11 @@ export default function Contact() {
         <Reveal from="left" className="lg:col-span-2 flex flex-col">
           <h3 className="text-2xl font-bold leading-tight">
             Let&apos;s build something{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-r from-brand to-purple-500 bg-clip-text text-transparent animate-gradient-x">
               great together
             </span>
           </h3>
-          <p className="mt-3 text-gray-400 text-sm leading-relaxed">
+          <p className="mt-3 text-ink-muted text-sm leading-relaxed">
             Open to full-time roles, freelance work and interesting collaborations. Reach out
             through the form or any of the channels below.
           </p>
@@ -91,7 +91,7 @@ export default function Contact() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/10 px-4 py-2 text-sm text-gray-200 transition-all hover:border-cyan-400 hover:bg-cyan-400/10 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+                className="group inline-flex items-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/10 px-4 py-2 text-sm text-ink-soft transition-all hover:border-brand hover:bg-brand/10 hover:text-brand-soft hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
               >
                 <Icon /> {label}
                 <ArrowUpRight

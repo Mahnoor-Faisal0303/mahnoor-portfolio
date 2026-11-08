@@ -3,10 +3,12 @@ import Head from "next/head";
 import Navbar from "@/layout/navbar";
 import Footer from "@/layout/footer";
 import { Toaster } from "sonner";
+import { useTheme } from "@/components/theme-toggle";
 
 export default function App({ Component, pageProps }) {
+  const { theme } = useTheme();
   return (
-    <div className="bg-[#1A0B2E] text-white min-h-screen">
+    <div className="bg-surface text-ink min-h-screen">
       <Head>
         <title>Mahnoor Faisal | Software Engineer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,7 +16,7 @@ export default function App({ Component, pageProps }) {
       <Navbar />
       <Toaster
         position="bottom-right"
-        theme="dark"
+        theme={theme}
         richColors
         closeButton
         duration={4000}

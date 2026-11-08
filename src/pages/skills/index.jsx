@@ -14,12 +14,12 @@ export default function Skills() {
             key={group}
             className={`${cardClass} p-6 transition-transform duration-300 hover:-translate-y-1`}
           >
-            <h3 className="text-lg font-semibold text-cyan-400 mb-4">{group}</h3>
+            <h3 className="text-lg font-semibold text-brand mb-4">{group}</h3>
             <div className="flex flex-wrap gap-2">
               {items.map((item) => (
                 <span
                   key={item}
-                  className="text-sm px-3 py-1 rounded-full bg-[#1A0B2E] border border-[#693B93] text-gray-200"
+                  className="text-sm px-3 py-1 rounded-full bg-surface border border-edge text-ink-soft"
                 >
                   {item}
                 </span>

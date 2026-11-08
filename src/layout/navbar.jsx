@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import { scrollToSection } from "@/lib/scroll";
+import ThemeToggle from "@/components/theme-toggle";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -13,8 +14,8 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
-const linkClass = "hover:text-cyan-400 transition-colors";
-const activeClass = "text-cyan-400";
+const linkClass = "hover:text-brand transition-colors";
+const activeClass = "text-brand";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ export default function Navbar() {
 
   return (
     <>
-    <nav className="bg-[#1A0B2E]/95 backdrop-blur text-white shadow-md sticky top-0 z-50">
+    <nav className="bg-surface/95 backdrop-blur text-ink shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <a
@@ -54,7 +55,7 @@ export default function Navbar() {
             onClick={(e) => scrollToSection(e, "#home")}
             className="text-xl sm:text-2xl font-bold"
           >
-            Mahnoor<span className="text-cyan-400">.</span>
+            Mahnoor<span className="text-brand">.</span>
           </a>
 
           <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
@@ -72,19 +73,23 @@ export default function Navbar() {
               href={profile.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-[#693B93] hover:border-cyan-400 hover:text-cyan-400 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-edge hover:border-brand hover:text-brand transition-colors"
             >
               <Download size={14} /> Resume
             </a>
+            <ThemeToggle />
           </div>
 
-          <button
-            onClick={() => setIsOpen(true)}
-            aria-label="Open menu"
-            className="md:hidden hover:cursor-pointer"
-          >
-            <Menu size={24} />
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(true)}
+              aria-label="Open menu"
+              className="hover:cursor-pointer"
+            >
+              <Menu size={24} />
+            </button>
+          </div>
         </div>
       </div>
     </nav>
@@ -94,9 +99,9 @@ export default function Navbar() {
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="fixed inset-0 bg-black/80" onClick={close} />
+        <div className="fixed inset-0 bg-black/60" onClick={close} />
         <div
-          className={`relative h-full bg-[#0b0314] border-r border-purple-500/20 w-3/4 max-w-xs p-6 shadow-2xl transform transition-transform duration-300 ${
+          className={`relative h-full bg-page border-r border-purple-500/20 w-3/4 max-w-xs p-6 shadow-2xl transform transition-transform duration-300 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
@@ -108,7 +113,7 @@ export default function Navbar() {
             <X size={24} />
           </button>
           <div className="text-2xl font-bold">
-            Mahnoor<span className="text-cyan-400">.</span>
+            Mahnoor<span className="text-brand">.</span>
           </div>
           <div className="mt-10 space-y-4 text-base font-bold">
             {links.map((l) => (
