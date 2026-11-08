@@ -10,7 +10,7 @@ export const profile = {
   medium: "https://medium.com/@mahnoorfaysal",
   resume: "/Resume/Mahnoor_JS_Software_Engineer.pdf",
   summary:
-    "Frontend developer with 3 years of experience building web and mobile applications with React, Next.js and modern JavaScript. I use AI-assisted development daily (Claude Code, ChatGPT, Gemini) for code generation, debugging and refactoring, and I turn business requirements and Figma designs into responsive, user-friendly interfaces.",
+    "Software engineer with 3 years of experience building web and mobile applications across the stack with React, Next.js, React Native, Django and modern JavaScript. I use AI-assisted development daily (Claude Code, ChatGPT, Gemini) for code generation, debugging and refactoring, and I turn business requirements and Figma designs into responsive, user-friendly interfaces backed by solid APIs.",
 };
 
 export const stats = [

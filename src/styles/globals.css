@@ -181,3 +181,107 @@ body {
   animation: gradient-x 3s linear infinite;
 }
 
+
+/* ---- Hero animations ---- */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.12); }
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.animate-float { animation: float-y 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float-y 5s ease-in-out 1.2s infinite; }
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+.animate-spin-reverse { animation: spin-slow 14s linear infinite reverse; }
+.animate-glow-pulse { animation: glow-pulse 6s ease-in-out infinite; }
+.animate-blink { animation: blink 1s step-end infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up { opacity: 1; animation: none; }
+  .animate-float, .animate-float-delayed, .animate-spin-slow,
+  .animate-spin-reverse, .animate-glow-pulse, .animate-blink { animation: none; }
+}
+
+/* ---- Stats + tech marquee ---- */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+@keyframes sheen {
+  from { transform: translateX(-120%) skewX(-20deg); }
+  to { transform: translateX(260%) skewX(-20deg); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0.5rem;
+  padding-right: 0.5rem;
+  animation: marquee-left 40s linear infinite;
+}
+.marquee-track.reverse { animation-name: marquee-right; animation-duration: 46s; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+.reveal {
+  opacity: 0;
+  transform: translate(var(--rx, 0), var(--ry, 28px)) scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+.stat-card:hover .sheen { animation: sheen 0.9s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .stat-card:hover .sheen { animation: none; }
+}
+
+/* ---- Experience ---- */
+@keyframes ring-pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+.animate-ring-pulse { animation: ring-pulse 2s ease-out infinite; }
+
+.exp-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(168,85,247,0.7), rgba(34,211,238,0.7));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.exp-card:hover::before { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ring-pulse { animation: none; opacity: 0; }
+}

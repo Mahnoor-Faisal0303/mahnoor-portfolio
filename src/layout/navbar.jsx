@@ -44,6 +44,7 @@ export default function Navbar() {
   }, []);
 
   return (
+    <>
     <nav className="bg-[#1A0B2E]/95 backdrop-blur text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -80,15 +81,16 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+    </nav>
 
       <div
-        className={`fixed inset-0 z-50 flex transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 z-[60] flex transition-all duration-300 md:hidden ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="fixed inset-0 bg-[#000000d4]" onClick={close} />
+        <div className="fixed inset-0 bg-black/80" onClick={close} />
         <div
-          className={`relative bg-[#1A0B2E] w-3/4 max-w-xs p-6 shadow-lg transform transition-transform duration-300 ${
+          className={`relative h-full bg-[#0b0314] border-r border-purple-500/20 w-3/4 max-w-xs p-6 shadow-2xl transform transition-transform duration-300 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
@@ -124,6 +126,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 }

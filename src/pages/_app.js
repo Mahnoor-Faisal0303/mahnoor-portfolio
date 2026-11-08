@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import Head from "next/head";
 import Navbar from "@/layout/navbar";
+import Footer from "@/layout/footer";
 import { Toaster } from "sonner";
 
 export default function App({ Component, pageProps }) {
@@ -19,6 +20,7 @@ export default function App({ Component, pageProps }) {
         duration={4000}
       />
       <Component {...pageProps} />
+      <Footer />
     </div>
   );
 }

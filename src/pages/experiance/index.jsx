@@ -1,42 +1,118 @@
-import { Section, Tag, cardClass } from "@/components/section";
+import { useEffect, useRef, useState } from "react";
+import { Briefcase, CheckCircle2, CalendarDays } from "lucide-react";
+import { Section, Tag } from "@/components/section";
+import Reveal from "@/components/reveal";
 import { experience } from "@/data/portfolio";
 
 export default function Experiance() {
+  const listRef = useRef(null);
+  const [progress, setProgress] = useState(0);
+
+  // timeline line fills as the user scrolls through the list
+  useEffect(() => {
+    const update = () => {
+      const el = listRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      const p = (viewport * 0.6 - rect.top) / rect.height;
+      setProgress(Math.min(Math.max(p, 0), 1));
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
     <Section
       id="experience"
       title="Work Experience"
       subtitle="Three years of growing from intern to leading frontend on a multi-product platform."
+      className="relative overflow-hidden"
     >
-      <ol className="relative border-l-2 border-[#693B93] mx-3 md:mx-auto max-w-4xl space-y-10">
-        {experience.map((job) => (
-          <li key={job.title + job.period} className="px-6 md:px-10 relative">
-            <span
-              className={`absolute -left-[9px] top-2 h-4 w-4 rounded-full border-2 border-[#0b0314] ${
-                job.current ? "bg-cyan-400 animate-pulse" : "bg-purple-500"
-              }`}
-            />
-            <div className={`${cardClass} p-6`}>
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="text-xl font-semibold">{job.title}</h3>
-                <span className="text-sm text-cyan-400">{job.period}</span>
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 -left-32 h-96 w-96 rounded-full bg-purple-600/20 blur-[120px] animate-glow-pulse" />
+        <div className="absolute bottom-10 -right-32 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px] animate-glow-pulse [animation-delay:3s]" />
+      </div>
+
+      <ol ref={listRef} className="relative max-w-4xl mx-auto space-y-12 pl-8 md:pl-12">
+        {/* base line + animated progress line */}
+        <span aria-hidden className="absolute left-[11px] md:left-[15px] top-2 bottom-2 w-0.5 bg-[#693B93]/40" />
+        <span
+          aria-hidden
+          className="absolute left-[11px] md:left-[15px] top-2 bottom-2 w-0.5 origin-top bg-gradient-to-b from-cyan-400 via-purple-500 to-purple-700 shadow-[0_0_12px_rgba(168,85,247,0.8)]"
+          style={{ transform: `scaleY(${progress})` }}
+        />
+
+        {experience.map((job, i) => (
+          <li key={job.title + job.period} className="relative">
+            {/* timeline node */}
+            <span className="absolute -left-8 md:-left-12 top-6 flex h-6 w-6 md:h-8 md:w-8 items-center justify-center">
+              {job.current && (
+                <span className="absolute inset-0 rounded-full bg-cyan-400 animate-ring-pulse" />
+              )}
+              <span
+                className={`relative flex h-full w-full items-center justify-center rounded-full border-2 border-[#0b0314] ${
+                  job.current
+                    ? "bg-cyan-400 text-[#0b0314] shadow-[0_0_18px_#22d3ee]"
+                    : "bg-purple-500 text-white shadow-[0_0_14px_#a855f7]"
+                }`}
+              >
+                <Briefcase size={13} />
+              </span>
+            </span>
+
+            <Reveal from="right" delay={80}>
+              <div className="exp-card group relative rounded-2xl border border-[#693B93]/70 bg-gradient-to-br from-[#130428] via-[#2a0e52]/90 to-[#190634] p-6 md:p-7 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_-15px_rgba(168,85,247,0.55)]">
+                <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-xl font-semibold">{job.title}</h3>
+                      {job.current && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-2.5 py-0.5 text-[11px] font-medium text-cyan-300">
+                          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                          Current
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-purple-300 italic mt-1">{job.company}</p>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-purple-400/30 bg-purple-500/10 px-3 py-1 text-xs text-cyan-300">
+                    <CalendarDays size={13} /> {job.period}
+                  </span>
+                </div>
+
+                <ul className="mt-5 space-y-2.5 text-sm text-gray-300">
+                  {job.points.map((p) => (
+                    <li key={p} className="flex gap-2.5 leading-relaxed">
+                      <CheckCircle2
+                        size={16}
+                        className="mt-0.5 shrink-0 text-purple-400 transition-colors group-hover:text-cyan-400"
+                      />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {job.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="transition-transform duration-200 hover:-translate-y-0.5"
+                    >
+                      <Tag>{t}</Tag>
+                    </span>
+                  ))}
+                </div>
               </div>
-              <p className="text-purple-300 italic mb-4">{job.company}</p>
-              <ul className="list-disc pl-5 space-y-2 text-sm text-gray-300">
-                {job.points.map((p) => (
-                  <li key={p}>{p}</li>
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-2 mt-5">
-                {job.tags.map((t) => (
-                  <Tag key={t}>{t}</Tag>
-                ))}
-              </div>
-            </div>
+            </Reveal>
           </li>
         ))}
       </ol>
-
     </Section>
   );
 }
